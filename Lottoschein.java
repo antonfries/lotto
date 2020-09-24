@@ -9,6 +9,7 @@ public class Lottoschein {
             spielscheinNummer += (int) (Math.random() * 10);
         }
         this.lottozahlen = lottozahlen;
+
     }
 
     public Lottozahlen getLottozahlen() {
