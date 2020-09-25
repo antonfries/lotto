@@ -17,24 +17,24 @@ public class Lotto {
 
     public void ziehenLottoZahlen() {
         ziehung = new Ziehung();
-        System.out.println("[DEBUG] Ziehung: " + ziehung.getLottozahlen().toString());
+        System.out.println("[DEBUG] Ziehung: " + ziehung.toString());
     }
 
     public void auswerten() {
         if (ziehung == null) {
             throw new RuntimeException("Es ist noch keine Ziehung erfolgt worden!");
         }
-        int uebereinstimmungZahl;
+        int anzahlRichtige;
         int index = 1;
         System.out.println("Klasse\tAnzahl Richtige");
         for (Lottoschein lottoschein : lottoscheine) {
-            uebereinstimmungZahl = ziehung.getLottozahlen().vergleichen(lottoschein.getLottozahlen());
-            System.out.print(index + "\t" + uebereinstimmungZahl + " Richtige");
+            anzahlRichtige = ziehung.getLottozahlen().vergleichen(lottoschein.getLottozahlen());
+            System.out.print(index + "\t" + anzahlRichtige + " Richtige");
             if (lottoschein.getSuperZahl() == ziehung.getSuperzahl()) {
                 System.out.print(" + SZ");
             }
             System.out.println();
-            System.out.println("[DEBUG] "+lottoschein.toString());
+            System.out.println("[DEBUG] " + lottoschein.toString());
             index++;
         }
         lottoscheine = new ArrayList<>();
