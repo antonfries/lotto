@@ -1,15 +1,16 @@
 package antonfries.lotto;
 
+import java.util.stream.IntStream;
+
 public class Lottoschein {
     private String spielscheinNummer = "";
     private final Lottozahlen lottozahlen;
 
     public Lottoschein(Lottozahlen lottozahlen) {
-        for (int i = 0; i < 7; i++) {
+        IntStream.range(0, 7).forEach($ -> {
             spielscheinNummer += (int) (Math.random() * 10);
-        }
+        });
         this.lottozahlen = lottozahlen;
-
     }
 
     public Lottozahlen getLottozahlen() {
