@@ -5,11 +5,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Lottozahlen {
     final int MAX = 49;
-    private int[] lottozahlen;
+    private final int[] lottozahlen;
 
     public Lottozahlen() {
         lottozahlen = ThreadLocalRandom.current().ints(1, MAX)
-                .distinct().limit(6).toArray();
+                .distinct().limit(6).sorted().toArray();
     }
 
     public int[] getLottozahlen() {
@@ -18,12 +18,14 @@ public class Lottozahlen {
 
     public Lottozahlen(int zahl1, int zahl2, int zahl3, int zahl4, int zahl5, int zahl6) {
         lottozahlen = new int[6];
+        // TODO: [optional] Die Zahlen können noch überprüft werden, ob sie von 1 bis MAX liegen
         lottozahlen[0] = zahl1;
         lottozahlen[1] = zahl2;
         lottozahlen[2] = zahl3;
         lottozahlen[3] = zahl4;
         lottozahlen[4] = zahl5;
         lottozahlen[5] = zahl6;
+        Arrays.sort(lottozahlen);
     }
 
     @Override
@@ -46,6 +48,7 @@ public class Lottozahlen {
                 int i = 0;
 
                 while (true) {
+                    // Anpassung: Zahlen kleiner 10 mit 0 prefixen
                     if (a[i] < 10) {
                         b.append('0');
                     }

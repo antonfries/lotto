@@ -2,7 +2,7 @@ package antonfries.lotto;
 
 public class Lottoschein {
     private String spielscheinNummer = "";
-    private Lottozahlen lottozahlen;
+    private final Lottozahlen lottozahlen;
 
     public Lottoschein(Lottozahlen lottozahlen) {
         for (int i = 0; i < 7; i++) {
@@ -16,6 +16,11 @@ public class Lottoschein {
         return lottozahlen;
     }
 
+    /**
+     * getSpielscheinNummer() nicht benötigt
+     *
+     * @return int
+     */
     public int getSuperZahl() {
         return Integer.parseInt(String.valueOf(spielscheinNummer.charAt(spielscheinNummer.length() - 1)));
     }
